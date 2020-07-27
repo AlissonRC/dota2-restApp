@@ -1,0 +1,26 @@
+{
+  "name": "dota2-restApp",
+  "version": "1.0.0",
+  "description": "Simple app using DotA 2 api",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlissonRC/dota2-restApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlissonRC/dota2-restApp/issues"
+  },
+  "homepage": "https://github.com/AlissonRC/dota2-restApp#readme"
+}
