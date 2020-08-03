@@ -4,10 +4,13 @@
   "description": "Simple app using DotA 2 api",
   "main": "server.js",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "request": "^2.88.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "http-server": "^0.12.3"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"

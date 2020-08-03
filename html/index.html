@@ -1,4 +1,55 @@
-<html>
-  <h1>teste</h1>
-    
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="getHero" onclick="getHero();">Random hero</button>
+    <span id="hero"></span>
+    <div>
+      <img src="" id="heroimg" />
+    </div>
+  </body>
 </html>
+<script>
+  async function getHero() {
+    let hero_name = "abaddon";
+    const response = await fetch("http://localhost:3003/heroes/random");
+
+    if (response.ok) {
+      console.log("SUCESS");
+      const data = await response.json();
+      let span = document.getElementById("hero");
+      let img = document.getElementById("heroimg");
+      console.log(data);
+      let heroname = data[0].name;
+      let heronamenew = heroname.replace("npc_dota_hero_", "");
+      let heronameUppercase =
+        heronamenew.charAt(0).toUpperCase() + heronamenew.slice(1);
+      img.src = `http://cdn.dota2.com/apps/dota2/images/heroes/${heronamenew}_full.png`;
+      span.innerText = heronameUppercase;
+    } else {
+      console.log("ERROR");
+    }
+  }
+</script>
+<style>
+  div {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  span {
+    font-size: large;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  img {
+    border-radius: 8px;
+  }
+</style>

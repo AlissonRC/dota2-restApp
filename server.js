@@ -3,24 +3,34 @@ const api_url =
 
 const request = require("request");
 const express = require("express");
+const cors = require("cors");
 
 const api = express();
-
+api.use(cors());
 api.listen(3003, () => {
   console.log("running");
 });
 
-api.get("/", (req, res) => {
-  console.log(req);
+api.get("/heroes/random", (req, res) => {
   request.get(api_url, (error, response, body) => {
     if (error) {
       return console.log(error);
     }
-    const obj_response_heroes = JSON.parse(body);
-    const arrayHeroes = obj_response_heroes.result.heroes;
-    
-    for (let x = 0; x < arrayHeroes.length; x++) {
-      console.log(arrayHeroes[x].name, arrayHeroes[x].id);
-    }
+    const body_resp = JSON.parse(body);
+    const result = body_resp.result;
+    console.log(result);
+    const arrayId = [];
+
+    result.heroes.forEach((element) => {
+      arrayId.push(element.id);
+    });
+    let randomizer = Math.floor(Math.random() * (arrayId.length - 1 - 0) + 0);
+    const randomID = arrayId[randomizer];
+    const hero = result.heroes.filter((element, id) => {
+      return element.id === randomID;
+    });
+    console.log(arrayId);
+    console.log(hero);
+    res.send(hero);
   });
 });
