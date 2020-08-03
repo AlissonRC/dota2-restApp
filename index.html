@@ -16,7 +16,9 @@
 <script>
   async function getHero() {
     let hero_name = "abaddon";
-    const response = await fetch("http://localhost:3003/heroes/random");
+    const response = await fetch(
+      "https://dota2appalpha.herokuapp.com/heroes/random"
+    );
 
     if (response.ok) {
       console.log("SUCESS");
