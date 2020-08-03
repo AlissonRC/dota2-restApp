@@ -1,3 +1,4 @@
+var porta = process.env.PORT || 8080;
 const api_url =
   "https://api.steampowered.com/IEconDOTA2_570/GetHeroes/v0001/?key=0491B65D014FAA237EA9C65D1387304D";
 
@@ -7,7 +8,7 @@ const cors = require("cors");
 
 const api = express();
 api.use(cors());
-api.listen(3003, () => {
+api.listen(porta, () => {
   console.log("running");
 });
 
