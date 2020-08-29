@@ -3,13 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
-    <button id="getHero" onclick="getHero();">Random hero</button>
-    <span id="hero"></span>
-    <div>
-      <img src="" id="heroimg" />
+    <div class="container">
+      <button class="buttonstyle" id="getHero" onclick="getHero();">
+        Random hero
+      </button>
+      <span class="heroname" id="hero"></span>
+
+      <img
+        class="heroimage"
+        id="heroimg"
+        src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs"
+      />
     </div>
   </body>
 </html>
@@ -38,26 +49,51 @@
   }
 </script>
 <style>
-  div {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  body {
+    margin: 0;
   }
-  span {
-    font-size: large;
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  .heroname {
+    background-color: rgb(51, 0, 0);
+    color: rgb(156, 156, 156);
+    font-size: 1.5em;
+    box-shadow: 0 14px 28px rgba(51, 0, 0, 0.582),
+      0 10px 10px rgba(51, 0, 0, 0.712);
+    width: 100%;
+    text-align: center;
+    margin: 20px;
+    font-weight: 400;
+    font-family: "Roboto", sans-serif;
   }
-  img {
-    border-radius: 8px;
+  .heroimage {
+    height: 140px;
+    width: 250px;
+    border-radius: 10%;
   }
-  button {
-    position: fixed;
-    top: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  .container {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+  }
+  .buttonstyle {
+    padding: 0.5em 1em;
+    font-weight: 800;
+    border-radius: 3px;
+    font-size: 1em;
+    color: rgb(156, 156, 156);
+    background-color: rgb(51, 0, 0);
+    border: none;
+    outline: none;
+  }
+  .buttonstyle:hover {
+    color: white;
+    background-color: rgb(165, 0, 0);
+    box-shadow: 0 14px 28px rgba(51, 0, 0, 0.582),
+      0 10px 10px rgba(51, 0, 0, 0.712);
+
+    outline: none;
   }
 </style>
