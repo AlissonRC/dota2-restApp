@@ -4,6 +4,7 @@
   "description": "Simple app using DotA 2 api",
   "main": "server.js",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "node-fetch": "^2.6.1"
   },
