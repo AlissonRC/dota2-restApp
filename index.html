@@ -26,26 +26,28 @@
 </html>
 <script>
   async function getHero() {
-    let hero_name = "abaddon";
-    const response = await fetch(
-      "https://dota2appalpha.herokuapp.com/heroes/random"
-    );
+    const heroku_url = "https://dota2appalpha.herokuapp.com/heroes/random";
+    const response = await fetch("/heroes/random");
+    const data = await response.json();
+    const heroes = data.result.heroes;
+    const hero_name = [];
+    heroes.forEach((element) => {
+      hero_name.push(element.name);
+    });
+    console.log(hero_name);
 
-    if (response.ok) {
-      console.log("SUCESS");
-      const data = await response.json();
-      let span = document.getElementById("hero");
-      let img = document.getElementById("heroimg");
-      console.log(data);
-      let heroname = data[0].name;
-      let heronamenew = heroname.replace("npc_dota_hero_", "");
-      let heronameUppercase =
-        heronamenew.charAt(0).toUpperCase() + heronamenew.slice(1);
-      img.src = `http://cdn.dota2.com/apps/dota2/images/heroes/${heronamenew}_full.png`;
-      span.innerText = heronameUppercase;
-    } else {
-      console.log("ERROR");
-    }
+    const randomizer = Math.floor(
+      Math.random() * (hero_name.length - 1 - 0) + 0
+    );
+    const randomHero = hero_name[randomizer];
+
+    const span = document.getElementById("hero");
+    const img = document.getElementById("heroimg");
+    const heronamenew = randomHero.replace("npc_dota_hero_", "");
+    const heronameUppercase =
+      heronamenew.charAt(0).toUpperCase() + heronamenew.slice(1);
+    img.src = `http://cdn.dota2.com/apps/dota2/images/heroes/${heronamenew}_full.png`;
+    span.innerText = heronameUppercase;
   }
 </script>
 <style>
@@ -88,7 +90,7 @@
     border: none;
     outline: none;
   }
-  .buttonstyle:hover {
+  .buttonstyle:active {
     color: white;
     background-color: rgb(165, 0, 0);
     box-shadow: 0 14px 28px rgba(51, 0, 0, 0.582),
