@@ -26,7 +26,6 @@
 </html>
 <script>
   async function getHero() {
-    const heroku_url = "https://dota2appalpha.herokuapp.com/heroes/random";
     const response = await fetch("/heroes/random");
     const data = await response.json();
     const heroes = data.result.heroes;
@@ -45,8 +44,15 @@
     const heronamenew = randomHero.replace("npc_dota_hero_", "");
     const heronameUppercase =
       heronamenew.charAt(0).toUpperCase() + heronamenew.slice(1);
-    img.src = `http://cdn.dota2.com/apps/dota2/images/heroes/${heronamenew}_full.png`;
+    getHeroImage(heronamenew);
+
     span.innerText = heronameUppercase;
+  }
+  async function getHeroImage(heroname) {
+    const response = await fetch(`/image?heroname=${heroname}`);
+    const img = document.getElementById("heroimg");
+    const image = await response.blob();
+    img.src = URL.createObjectURL(image);
   }
 </script>
 <style>
